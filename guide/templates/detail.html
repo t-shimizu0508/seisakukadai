@@ -1,0 +1,70 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}詳細ページ{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<div class="main">
+  <section class="module-small">
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-8">
+                  <div class="post">
+                      <div class="post-thumbnail">
+                          <img src="{{ guidepost.thumbnail.url }}" alt="Blog Featured Image"/>
+                      </div>
+                      <div class="post-header font-alt">
+                          <h1 class="post-title">{{ guidepost.title }}</h1>
+                          <div class="post-meta">| {{ guidepost.posted_at }} | {{ guidepost.category }}</div>
+                      </div>
+                      <div class="post-entry">
+                          <h3>{{ guidepost.content }}</h3> 
+                      </div>
+                  </div>
+
+                  {% comment %} <div class="comments">
+                      <h4 class="comment-title font-alt">There are {{ comments.count }} comments</h4>
+                      {% for comment in comments %}
+                          <div class="comment clearfix">
+                              <div class="comment-content clearfix">
+                                  <div class="comment-author font-alt"><a>{{ comments.name }}</a></div>
+                                  <div class="comment-body">
+                                      <p>{{ comments.compost }}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      {% endfor %}
+                  </div>
+                  
+                  <!-- コメントフォーム -->
+                  <div class="comment-form">
+                      <h4 class="comment-form-title font-alt">Add your comment</h4>
+                      <form method="post">
+                          {% csrf_token %}
+
+                          <div class="form-group">
+                              <label class="sr-only" for="name">Name</label>
+
+                              <input class="form-control" id="name" type="text" name="name" placeholder="Name"/>
+
+                          </div>
+                          <div class="form-group">
+
+                              <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="Comment"></textarea>
+                          </div>
+                          <button class="btn btn-round btn-d" type="submit">Post comment</button>
+
+                      </form>
+                  </div> {% endcomment %}
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
+
+{%endblock%}
